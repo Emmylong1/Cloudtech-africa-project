@@ -1,37 +1,46 @@
 variable "project_id" {
-  type        = string
   description = "GCP project ID"
-}
-variable "cluster_name" {
-  description = "The name for the GKE cluster"
-  default     = "demo-cluster-1"
-}
-variable "env_name" {
-  description = "The environment for the GKE cluster"
-  default     = "prod"
-}
-variable "region" {
-  description = "The region to host the cluster in"
-  default     = "us-west1"
-}
-variable "network" {
-  description = "The VPC network created to host the cluster in"
-  default     = "gke-network"
-}
-variable "subnetwork" {
-  description = "The subnetwork created to host the cluster in"
-  default     = "gke-subnet"
-}
-variable "ip_range_pods_name" {
-  description = "The secondary ip range to use for pods"
-  default     = "ip-range-pods"
-}
-variable "ip_range_services_name" {
-  description = "The secondary ip range to use for services"
-  default     = "ip-range-services"
-}
-variable "project" {
-  description = "The ID of the Google Cloud project"
   type        = string
 }
 
+variable "cluster_name" {
+  description = "The name of the GKE cluster"
+  type        = string
+  default     = "demo-cluster-1"
+}
+
+variable "env_name" {
+  description = "Deployment environment"
+  type        = string
+  default     = "prod"
+}
+
+variable "region" {
+  description = "GCP region"
+  type        = string
+  default     = "us-west1"
+}
+
+variable "network_name" {
+  description = "VPC network for the GKE cluster"
+  type        = string
+  default     = "gke-network"
+}
+
+variable "subnetwork_name" {
+  description = "Subnetwork for the GKE cluster"
+  type        = string
+  default     = "gke-subnet"
+}
+
+variable "ip_range_pods_name" {
+  description = "Secondary IP range for GKE pods"
+  type        = string
+  default     = "ip-range-pods"
+}
+
+variable "ip_range_services_name" {
+  description = "Secondary IP range for GKE services"
+  type        = string
+  default     = "ip-range-services"
+}
