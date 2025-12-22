@@ -1,6 +1,7 @@
 terraform {
  backend "gcs" {
-   bucket  = "thekubekloud"
+   bucket  = "devops-bucket12"
    prefix  = "terraform/state"
  }
+
 }
