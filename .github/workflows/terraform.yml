@@ -1,4 +1,4 @@
-name: Terraform
+name: Terraform GCP
 
 on:
   push:
@@ -7,50 +7,45 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   terraform:
-    name: Terraform
     runs-on: ubuntu-latest
     environment: production
 
     defaults:
       run:
         shell: bash
+        working-directory: terraform
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Authenticate to Google Cloud
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      # Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.6.6
 
-      # Terraform Init
       - name: Terraform Init
         run: terraform init
         env:
           TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-      # Terraform Format check
       - name: Terraform Format
         run: terraform fmt -check
 
-      # Terraform Plan
       - name: Terraform Plan
         run: terraform plan -input=false
         env:
           TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-      # Terraform Apply (only on main)
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -input=false
