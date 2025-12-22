@@ -14,21 +14,3 @@
  * limitations under the License.
  */
 
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 4.47.0"
-    }
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-    }
-  }
-  required_version = ">= 0.13"
-}
-
-provider "google" {
-    credentials = file("/home/runner/work/_temp/105bf773-f0e2-4d81-a205-59dde38e65c8/terraform-bin plan -input=false -var-file=terraform.tfvars")
-    project     = var.project
-    region      = var.region
-}
