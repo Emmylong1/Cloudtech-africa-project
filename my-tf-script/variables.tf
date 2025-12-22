@@ -1,6 +1,6 @@
 variable "project_id" {
-  description = "The project ID to host the cluster in"
-  default     = "modular-edge-183716"
+  type        = string
+  description = "GCP project ID"
 }
 variable "cluster_name" {
   description = "The name for the GKE cluster"
@@ -34,3 +34,4 @@ variable "project" {
   description = "The ID of the Google Cloud project"
   type        = string
 }
+
