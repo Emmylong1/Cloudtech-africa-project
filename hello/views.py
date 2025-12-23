@@ -6,7 +6,7 @@ from django.views.decorators.http import require_GET, require_POST
 
 @require_GET
 def hello_devops(request):
-    return HttpResponse("Hello, DevOps!")
+    return HttpResponse("Hello, great devops engineers!")
 
 
 @require_GET
