@@ -1,4 +1,4 @@
-project_id             = "my-project-id"
+project_id             = "GCP_PROJECT_ID"
 region                 = "us-west1"
 cluster_name           = "my-gke-cluster"
 network_name           = "gke-network"
