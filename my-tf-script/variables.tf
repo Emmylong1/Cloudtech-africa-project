@@ -15,11 +15,6 @@ variable "env_name" {
   default     = "prod"
 }
 
-variable "region" {
-  description = "GCP region"
-  type        = string
-  default     = "us-west1"
-}
 
 variable "network_name" {
   description = "VPC network for the GKE cluster"

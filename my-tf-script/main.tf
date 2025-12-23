@@ -24,7 +24,7 @@ module "gcp-network" {
     {
       subnet_name   = "${var.subnetwork_name}-${var.env_name}"
       subnet_ip     = "10.10.0.0/16"
-      subnet_region = var.region
+      subnet_region = "africa-south1"
     }
   ]
 
@@ -57,7 +57,6 @@ module "gke" {
   project_id             = var.project_id
   name                   = "${var.cluster_name}-${var.env_name}"
   regional               = true
-  region                 = var.region
   network                = module.gcp-network.network_name
   subnetwork             = module.gcp-network.subnets_names[0]
   ip_range_pods          = var.ip_range_pods_name
