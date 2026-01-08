@@ -1,4 +1,4 @@
-name: Terraform GCP
+name: Terraform GCP Dev
 
 on:
   pull_request:
@@ -13,18 +13,12 @@ permissions:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        env:
-          - dev
-
-    environment: ${{ matrix.env }}
+    environment: dev
 
     defaults:
       run:
         shell: bash
-        working-directory: my-tf-script/environments/${{ matrix.env }}
+        working-directory: my-tf-script/environments/dev
 
     steps:
       - name: Checkout repository
