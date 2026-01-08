@@ -34,6 +34,23 @@ jobs:
         with:
           terraform_version: 1.6.6
 
+      # 🔍 PROVE the secret is injected
+      - name: Validate project id secret
+        run: |
+          if [ -z "$TF_VAR_project_id" ]; then
+            echo "ERROR: TF_VAR_project_id is empty"
+            exit 1
+          fi
+
+          if [ "$TF_VAR_project_id" = "GCP_PROJECT_ID" ]; then
+            echo "ERROR: TF_VAR_project_id is literally 'GCP_PROJECT_ID'"
+            exit 1
+          fi
+
+          echo "Using project id: $TF_VAR_project_id"
+        env:
+          TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+
       - name: Terraform Init
         run: terraform init
         env:
